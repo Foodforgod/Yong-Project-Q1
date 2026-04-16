@@ -77,25 +77,30 @@ body{
 	align-items: center;
 }
 
-footer{
-	width: 100%;
-    background-color:#333;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
+footer {
+  position: fixed; 
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100; 
+  background: rgba(0, 0, 0, 0.7); 
+  backdrop-filter: blur(5px); 
+  color: white;
+  padding: 1rem 0;
+  text-align: center;
 }
-.submenu{
-	position: absolute;
-	top: 50px;
-	right: 5px;
-	background-color: #333;
-	border-radius: 5px;
-	display: none;
+.submenu {
+    position: absolute;
+    top: 50px;
+    right: 5px;
+    background-color: #333;
+    border-radius: 5px;
+    display: none;
+    z-index: 10; 
 }
-.submenu.show{
-	display: block;
+
+.submenu.show {
+    display: block; 
 }
 .submenu .dropdown{
 	list-style: none;
@@ -103,6 +108,7 @@ footer{
 	flex-direction: column;
 	padding: 10px 0;
 }
+
 .profile-page {
     min-height: calc(100vh - 140px);
     padding: 30px 15px 80px;
@@ -444,17 +450,59 @@ footer{
 
 }
 
-.main_container{
-	width: 100%;
-	min-height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-image: url(https://cdn.donmai.us/original/5a/13/__endministrator_perlica_female_endministrator_and_rossi_arknights_and_1_more_drawn_by_mint_tan__5a137396546342d65b575ffc051a8fe6.jpg);
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
+
+.main_container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+ 
 }
+
+
+.main_container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: url(https://cdn.donmai.us/original/5a/13/__endministrator_perlica_female_endministrator_and_rossi_arknights_and_1_more_drawn_by_mint_tan__5a137396546342d65b575ffc051a8fe6.jpg) center/cover no-repeat;
+}
+
+
+.main_container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: smoothFade 20s infinite ease-in-out;
+}
+
+@keyframes smoothFade {
+  25%,50%  {
+    background-image: url(https://cdn.donmai.us/original/5a/13/__endministrator_perlica_female_endministrator_and_rossi_arknights_and_1_more_drawn_by_mint_tan__5a137396546342d65b575ffc051a8fe6.jpg);
+    opacity: 0; 
+  }
+   60%,90%{
+    background-image: url(https://cdn.donmai.us/original/32/50/__surtr_endministrator_perlica_female_endministrator_and_laevatain_arknights_and_1_more_drawn_by_mint_tan__32507f8d5cd7a2ac8ccb656eca23070f.jpg);
+    opacity: 1; 
+  }
+   100%{
+    background-image: url(https://cdn.donmai.us/original/5a/13/__endministrator_perlica_female_endministrator_and_rossi_arknights_and_1_more_drawn_by_mint_tan__5a137396546342d65b575ffc051a8fe6.jpg);
+    opacity: 1; 
+  }
+
+  
+}
+
+
+
+
 .cart-page .header{
     margin-bottom:16px;
 }
