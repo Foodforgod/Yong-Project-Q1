@@ -12,6 +12,6 @@ $conn=new mysqli($servername,$username,$password,$database);
 if($conn->connect_error){
 	die("connection failed:".$conn->connect_error);
 }
-//date_default_timezone("Asia/Kuala_Lumpur");
+
 date_default_timezone_set("Asia/Kuala_Lumpur");
 ?>
